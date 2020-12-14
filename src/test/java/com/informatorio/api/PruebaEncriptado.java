@@ -16,9 +16,6 @@ import static org.junit.Assert.assertTrue;
 public class PruebaEncriptado {
 
     @Autowired
-    private BCryptPasswordEncoder encoder;
-
-    @Autowired
     private UserService userService;
 
     @Test
