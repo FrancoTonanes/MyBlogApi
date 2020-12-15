@@ -8,6 +8,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
+
 @Service
 public class UserService {
     @Autowired
@@ -21,6 +23,8 @@ public class UserService {
 
     public User saveUser(User user){
         user.setPassword(encoder.encode(user.getPassword()));
+        Date fecha = new Date();
+        user.setFecha_alta(fecha);
         return userRepository.save(user);
     }
 
@@ -33,7 +37,7 @@ public class UserService {
         userEdit.setCityName(user.getCityName());
         userEdit.setStateName(user.getStateName());
         userEdit.setCountry(user.getCountry());
-        return saveUser(userEdit);
+        return userRepository.save(userEdit);
     }
 
     public void delete(Long userId){

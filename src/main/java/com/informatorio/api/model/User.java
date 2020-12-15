@@ -2,6 +2,8 @@ package com.informatorio.api.model;
 
 
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 
 import java.util.Date;
@@ -17,7 +19,9 @@ public class User{
     @Column(unique = true)
     private String email;
     private String password;
-    //private Date dataDate;
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private Date fecha_alta;
     private String cityName;
     private String stateName;
     private String country;
@@ -55,14 +59,14 @@ public class User{
         this.password = password;
     }
 
-  /*  public Date getDataDate() {
-        return dataDate;
+    public Date getFecha_alta() {
+        return fecha_alta;
     }
 
-    public void setDataDate(Date dataDate) {
-        this.dataDate = dataDate;
+    public void setFecha_alta(Date fecha_alta) {
+        this.fecha_alta = fecha_alta;
     }
-*/
+
     public String getCityName() {
         return cityName;
     }
