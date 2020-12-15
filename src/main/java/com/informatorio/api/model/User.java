@@ -5,6 +5,8 @@ package com.informatorio.api.model;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import java.util.Date;
 
@@ -18,6 +20,7 @@ public class User{
     private String lastName;
     @Column(unique = true)
     private String email;
+    @NotNull
     private String password;
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)

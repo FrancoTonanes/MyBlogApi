@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Optional;
 
 @RestController
@@ -25,9 +26,13 @@ public class UserController {
     public ResponseEntity<?> getUser(){
         return new ResponseEntity<>(userService.getUsers(), HttpStatus.OK);
     }
+    @GetMapping("/city")
+    public ResponseEntity<?> getCity(){
+        return new ResponseEntity<>(userService.getCity(), HttpStatus.OK);
+    }
 
     @PostMapping
-    public ResponseEntity<?> createUser(@RequestBody User user){
+    public ResponseEntity<?> createUser(@Valid @RequestBody User user){
         return new ResponseEntity<>(userService.saveUser(user), HttpStatus.CREATED);
     }
 

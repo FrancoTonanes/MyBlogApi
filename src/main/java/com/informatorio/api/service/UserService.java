@@ -21,6 +21,10 @@ public class UserService {
         return (ArrayList<User>) userRepository.findAll();
     }
 
+    public ArrayList<User> getCity(){
+        return (ArrayList<User>) userRepository.findByCityName("Resistencia");
+    }
+
     public User saveUser(User user){
         user.setPassword(encoder.encode(user.getPassword()));
         Date fecha = new Date();
