@@ -29,6 +29,7 @@ public class UserService {
     }
 
     public User editUser(Long userId, User user){
+        user.setPassword(encoder.encode(user.getPassword()));
         User userEdit = userRepository.getOne(userId);
         userEdit.setName(user.getName());
         userEdit.setLastName(user.getLastName());
@@ -37,6 +38,7 @@ public class UserService {
         userEdit.setCityName(user.getCityName());
         userEdit.setStateName(user.getStateName());
         userEdit.setCountry(user.getCountry());
+
         return userRepository.save(userEdit);
     }
 
