@@ -23,4 +23,15 @@ public class UserService {
         return userRepository.save(user);
     }
 
+    public User editUser(Long userId, User user){
+        User userEdit = userRepository.getOne(userId);
+        userEdit.setName(user.getName());
+        userEdit.setLastName(user.getLastName());
+        userEdit.setEmail(user.getEmail());
+        userEdit.setPassword(user.getPassword());
+        userEdit.setCityName(user.getCityName());
+        userEdit.setStateName(user.getStateName());
+        userEdit.setCountry(user.getCountry());
+        return saveUser(userEdit);
+    }
 }

@@ -15,7 +15,6 @@ import java.util.Optional;
 @RequestMapping("/api/v1/user")
 public class UserController {
 
-    private Boolean prueba;
     @Autowired
     private UserRepository userRepository;
     @Autowired
@@ -26,9 +25,15 @@ public class UserController {
     public ResponseEntity<?> getUser(){
         return new ResponseEntity<>(userService.getUsers(), HttpStatus.OK);
     }
+
     @PostMapping
     public ResponseEntity<?> createUser(@RequestBody User user){
         return new ResponseEntity<>(userService.saveUser(user), HttpStatus.CREATED);
     }
 
+    @PutMapping("/{userId}")
+    public ResponseEntity<?> editUser(@PathVariable Long userId, @RequestBody User user){
+
+        return new ResponseEntity<>(userService.editUser(userId, user), HttpStatus.OK);
+    }
 }
