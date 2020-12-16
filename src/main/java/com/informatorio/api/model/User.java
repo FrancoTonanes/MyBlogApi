@@ -10,7 +10,8 @@ import javax.validation.constraints.NotNull;
 
 import java.util.Date;
 
-@Entity
+@Entity(name = "users")
+@Table(name = "users")
 public class User{
 
     @Id

@@ -30,6 +30,10 @@ public class UserController {
     public ResponseEntity<?> getCity(){
         return new ResponseEntity<>(userService.getCity(), HttpStatus.OK);
     }
+    @GetMapping("/alta/{fecha}")
+    public ResponseEntity<?> getUsDate(@PathVariable String fecha){
+        return new ResponseEntity<>(userService.getUsDate(fecha), HttpStatus.OK);
+    }
 
     @PostMapping
     public ResponseEntity<?> createUser(@Valid @RequestBody User user){

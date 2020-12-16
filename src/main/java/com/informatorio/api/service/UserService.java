@@ -32,6 +32,10 @@ public class UserService {
         return userRepository.save(user);
     }
 
+    public ArrayList<User> getUsDate(String fecha){
+        return (ArrayList<User>) userRepository.findByAfterDate(fecha);
+    }
+
     public User editUser(Long userId, User user){
         user.setPassword(encoder.encode(user.getPassword()));
         User userEdit = userRepository.getOne(userId);
