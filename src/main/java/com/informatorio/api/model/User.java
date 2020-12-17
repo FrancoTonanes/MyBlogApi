@@ -10,18 +10,19 @@ import javax.validation.constraints.NotNull;
 
 import java.util.Date;
 
-@Entity(name = "users")
-@Table(name = "users")
+@Entity
+@Table(name = "user")
 public class User{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID_USER")
     private Long id;
     private String name;
     private String lastName;
     @Column(unique = true)
     private String email;
-    @NotNull
+
     private String password;
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
@@ -94,4 +95,6 @@ public class User{
     public void setCountry(String country) {
         this.country = country;
     }
+
+
 }
