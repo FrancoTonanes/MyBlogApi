@@ -3,8 +3,8 @@ package com.informatorio.api.model;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
 import java.util.Date;
 
 
@@ -22,9 +22,19 @@ public class Post {
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date dateCreated;
-    private Long author;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(referencedColumnName = "ID_USER", name = "POST_USER")
+    private User author;
     private Boolean published;
 
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;
@@ -58,11 +68,11 @@ public class Post {
         this.dateCreated = dateCreated;
     }
 
-    public Long getAuthor() {
+    public User getAuthor() {
         return author;
     }
 
-    public void setAuthor(Long author) {
+    public void setAuthor(User author) {
         this.author = author;
     }
 
@@ -73,6 +83,7 @@ public class Post {
     public void setPublished(Boolean published) {
         this.published = published;
     }
+
 
 
 
