@@ -38,4 +38,9 @@ public class PostService {
 
         return postRepository.save(postEdit);
     }
+
+    public void deletePost(Long idPost){
+        Post postDelete = postRepository.getOne(idPost);
+        postRepository.delete(postDelete);
+    }
 }

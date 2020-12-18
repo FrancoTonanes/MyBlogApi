@@ -29,16 +29,21 @@ public class PostController {
         return (ArrayList<Post>) postService.getAllPosts();
     }
 
-    @PostMapping("/comment/{idUser}")
+    @PostMapping("/{idUser}")
     public ResponseEntity<?> createPost(@PathVariable Long idUser, @RequestBody Post post){
         postService.savePost(idUser, post);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @PutMapping("/edit/{idPost}")
-
     public ResponseEntity<?> editPost(@PathVariable Long idPost, @RequestBody Post post){
         return new ResponseEntity<>(postService.editPost(idPost, post), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete/{idPost}")
+    public ResponseEntity<?> deletePost(@PathVariable Long idPost){
+        postService.deletePost(idPost);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 }
