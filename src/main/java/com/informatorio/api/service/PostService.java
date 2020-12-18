@@ -28,4 +28,14 @@ public class PostService {
         post.setAuthor(user);
         return postRepository.save(post);
     }
+
+    public Post editPost(Long idPost, Post post){
+        Post postEdit = postRepository.getOne(idPost);
+        postEdit.setTitle(post.getTitle());
+        postEdit.setDescription(post.getDescription());
+        postEdit.setContent(post.getContent());
+        postEdit.setPublished(post.getPublished());
+
+        return postRepository.save(postEdit);
+    }
 }

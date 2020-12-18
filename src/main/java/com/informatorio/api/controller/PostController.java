@@ -35,4 +35,10 @@ public class PostController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
+    @PutMapping("/edit/{idPost}")
+
+    public ResponseEntity<?> editPost(@PathVariable Long idPost, @RequestBody Post post){
+        return new ResponseEntity<>(postService.editPost(idPost, post), HttpStatus.OK);
+    }
+
 }
