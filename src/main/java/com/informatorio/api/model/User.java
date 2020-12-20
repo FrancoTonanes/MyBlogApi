@@ -2,6 +2,9 @@ package com.informatorio.api.model;
 
 
 
+import com.informatorio.api.repository.CommentRepository;
+import com.informatorio.api.repository.PostRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -17,9 +20,11 @@ import java.util.List;
 @Entity
 @Table(name = "user")
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_USER")
+
     private Long id;
     private String name;
     private String lastName;
@@ -33,10 +38,31 @@ public class User {
     private String cityName;
     private String stateName;
     private String country;
+
+
 /*
-    @OneToMany(cascade = {CascadeType.ALL, CascadeType.REFRESH})
+    @OneToMany
     private List<Post> allPosts;
-*/
+
+    @OneToMany
+    //@JoinColumn(name = "id_comment")
+    private List<Comment> allComments;
+
+
+
+
+
+    public List<Comment> getAllComments() {
+        return allComments;
+    }
+
+    public void setAllComments(List<Comment> allComments) {
+        this.allComments = allComments;
+    }
+
+ */
+
+
 
     public Long getId() {
         return id;
@@ -54,7 +80,7 @@ public class User {
         this.allPosts = allPosts;
     }
 
- */
+*/
 
     public String getName() {
         return name;
@@ -119,6 +145,7 @@ public class User {
     public void setCountry(String country) {
         this.country = country;
     }
+
 
 
 }

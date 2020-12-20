@@ -35,8 +35,8 @@ public class PostController {
 
     @PostMapping("/{idUser}")
     public ResponseEntity<?> createPost(@PathVariable Long idUser, @RequestBody Post post){
-        postService.savePost(idUser, post);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+
+        return new ResponseEntity<>(postService.savePost(idUser, post), HttpStatus.CREATED);
     }
 
     @PutMapping("/edit/{idPost}")

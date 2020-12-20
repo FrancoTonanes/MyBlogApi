@@ -25,7 +25,7 @@ public class PostService {
     }
 
     public Post savePost(Long idUser, Post post){
-        User user = userRepository.getOne(idUser);
+        User user = userRepository.findById(idUser).get();
         Date fecha = new Date();
         post.setDateCreated(fecha);
         post.setAuthor(user);

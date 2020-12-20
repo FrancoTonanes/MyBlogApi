@@ -1,12 +1,17 @@
 package com.informatorio.api.service;
 
+import com.informatorio.api.model.Comment;
+import com.informatorio.api.model.Post;
 import com.informatorio.api.model.User;
+import com.informatorio.api.repository.CommentRepository;
+import com.informatorio.api.repository.PostRepository;
 import com.informatorio.api.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -14,6 +19,10 @@ import java.util.Date;
 public class UserService {
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private CommentRepository commentRepository;
+    @Autowired
+    private PostRepository postRepository;
     @Autowired
     private BCryptPasswordEncoder encoder;
 
@@ -51,7 +60,14 @@ public class UserService {
     }
 
     public void delete(Long userId){
-        User userDelete = userRepository.getOne(userId);
+
+        ArrayList<Comment> comentarios = commentRepository.findByCommentUser(userId);
+        commentRepository.deleteAll(comentarios);
+
+        ArrayList<Post> post = postRepository.findByPost(userId);
+
+        postRepository.deleteAll(post);
+        User userDelete = userRepository.findById(userId).get();
         userRepository.delete(userDelete);
     }
 

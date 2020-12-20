@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 @Entity
@@ -23,9 +24,13 @@ public class Post {
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date dateCreated;
-    @ManyToOne(optional = false, cascade = {CascadeType.PERSIST, CascadeType.DETACH})
-    @JoinColumn(referencedColumnName = "ID_USER", name = "POST_USER")
+    @ManyToOne(cascade = {CascadeType.PERSIST})
+    //@JoinColumn(referencedColumnName = "ID_USER", name = "POST_USER")
     private User author;
+
+
+
+
     private Boolean published;
 
 
