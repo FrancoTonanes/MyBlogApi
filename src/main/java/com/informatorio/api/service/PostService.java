@@ -20,6 +20,9 @@ public class PostService {
     public ArrayList<Post> getAllPosts(){
         return (ArrayList<Post>) postRepository.findAll();
     }
+    public ArrayList<Post> allPostsUser(Long idUser){
+        return (ArrayList<Post>) postRepository.findByPost(idUser);
+    }
 
     public Post savePost(Long idUser, Post post){
         User user = userRepository.getOne(idUser);

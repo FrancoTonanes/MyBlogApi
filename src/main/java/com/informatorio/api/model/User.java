@@ -9,12 +9,14 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "user")
 public class User {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_USER")
@@ -31,7 +33,28 @@ public class User {
     private String cityName;
     private String stateName;
     private String country;
+/*
+    @OneToMany(cascade = {CascadeType.ALL, CascadeType.REFRESH})
+    private List<Post> allPosts;
+*/
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+/*
+    public List<Post> getAllPosts() {
+        return allPosts;
+    }
+
+    public void setAllPosts(List<Post> allPosts) {
+        this.allPosts = allPosts;
+    }
+
+ */
 
     public String getName() {
         return name;

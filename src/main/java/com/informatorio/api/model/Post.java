@@ -13,6 +13,7 @@ import java.util.Date;
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID_POST")
     private Long id;
     @Size(min = 10, max = 100)
     private String title;
@@ -22,7 +23,7 @@ public class Post {
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date dateCreated;
-    @ManyToOne(optional = false, cascade = CascadeType.PERSIST)
+    @ManyToOne(optional = false, cascade = {CascadeType.PERSIST, CascadeType.DETACH})
     @JoinColumn(referencedColumnName = "ID_USER", name = "POST_USER")
     private User author;
     private Boolean published;

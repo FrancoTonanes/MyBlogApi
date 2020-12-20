@@ -28,6 +28,10 @@ public class PostController {
     public ArrayList<Post> getPost(){
         return (ArrayList<Post>) postService.getAllPosts();
     }
+    @GetMapping("/user/{idUser}")
+    public ArrayList<Post> getUserPost(@PathVariable Long idUser){
+        return (ArrayList<Post>) postService.allPostsUser(idUser);
+    }
 
     @PostMapping("/{idUser}")
     public ResponseEntity<?> createPost(@PathVariable Long idUser, @RequestBody Post post){
