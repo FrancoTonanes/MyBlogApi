@@ -24,12 +24,8 @@ public class Post {
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date dateCreated;
-    @ManyToOne(cascade = {CascadeType.PERSIST})
-    //@JoinColumn(referencedColumnName = "ID_USER", name = "POST_USER")
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private User author;
-
-
-
 
     private Boolean published;
 

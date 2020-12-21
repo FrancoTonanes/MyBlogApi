@@ -40,29 +40,6 @@ public class User {
     private String country;
 
 
-/*
-    @OneToMany
-    private List<Post> allPosts;
-
-    @OneToMany
-    //@JoinColumn(name = "id_comment")
-    private List<Comment> allComments;
-
-
-
-
-
-    public List<Comment> getAllComments() {
-        return allComments;
-    }
-
-    public void setAllComments(List<Comment> allComments) {
-        this.allComments = allComments;
-    }
-
- */
-
-
 
     public Long getId() {
         return id;
@@ -71,16 +48,7 @@ public class User {
     public void setId(Long id) {
         this.id = id;
     }
-/*
-    public List<Post> getAllPosts() {
-        return allPosts;
-    }
 
-    public void setAllPosts(List<Post> allPosts) {
-        this.allPosts = allPosts;
-    }
-
-*/
 
     public String getName() {
         return name;
