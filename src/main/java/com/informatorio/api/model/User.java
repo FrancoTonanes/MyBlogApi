@@ -31,10 +31,10 @@ public class User {
     private String stateName;
     private String country;
     @JsonIgnore
-    @OneToMany(cascade = {CascadeType.ALL, CascadeType.REMOVE, CascadeType.PERSIST})
+    @OneToMany(mappedBy = "autor", cascade = {CascadeType.REMOVE})
     private List<Comment> comments;
     @JsonIgnore
-    @OneToMany(cascade = {CascadeType.ALL, CascadeType.REMOVE, CascadeType.PERSIST})
+    @OneToMany(mappedBy = "author", cascade = {CascadeType.REMOVE})
     private List<Post> posts;
 
     public List<Comment> getComments() {

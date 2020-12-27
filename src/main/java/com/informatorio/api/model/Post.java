@@ -25,10 +25,10 @@ public class Post {
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date dateCreated;
-    @ManyToOne(cascade = {CascadeType.PERSIST})
+    @ManyToOne
     private User author;
     @JsonIgnore
-    @OneToMany(cascade = {CascadeType.ALL, CascadeType.REMOVE, CascadeType.PERSIST}, orphanRemoval = true)
+    @OneToMany(mappedBy = "post", cascade = {CascadeType.REMOVE})
     private List<Comment> comments;
 
     public List<Comment> getComments() {
@@ -100,7 +100,8 @@ public class Post {
 
 
     public void cargarCommentPost(Comment comment){
-        this.comments.add(comment);
+        comments.add(comment);
+        setComments(comments);
     }
 
 }

@@ -21,9 +21,9 @@ public class Comment {
     private Date creationDate;
     @Size(max = 250)
     private String comment;
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
     private User autor;
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
     private Post post;
     public Post getPost() {
         return post;
