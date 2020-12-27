@@ -25,7 +25,6 @@ public class Comment {
     private User autor;
     @ManyToOne(cascade = CascadeType.PERSIST)
     private Post post;
-
     public Post getPost() {
         return post;
     }

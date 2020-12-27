@@ -29,6 +29,7 @@ public class PostService {
         Date fecha = new Date();
         post.setDateCreated(fecha);
         post.setAuthor(user);
+        user.cargarPost(post);
         return postRepository.save(post);
     }
 

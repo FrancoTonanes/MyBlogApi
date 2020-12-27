@@ -32,9 +32,13 @@ public class CommentController {
 
 
     @PutMapping("/edit/{idComment}")
-
     public Comment editComment(@PathVariable Long idComment, @RequestBody Comment comment){
         return commentService.editComment(idComment, comment);
+    }
+
+    @DeleteMapping("/delete/{idComment}")
+    public void deleteComment(@PathVariable Long idComment){
+        commentService.deleteComment(idComment);
     }
 
 

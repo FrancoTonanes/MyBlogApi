@@ -1,5 +1,6 @@
 package com.informatorio.api.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -24,8 +25,19 @@ public class Post {
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date dateCreated;
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = {CascadeType.PERSIST})
     private User author;
+    @JsonIgnore
+    @OneToMany(cascade = {CascadeType.ALL, CascadeType.REMOVE, CascadeType.PERSIST}, orphanRemoval = true)
+    private List<Comment> comments;
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
 
     private Boolean published;
 
@@ -87,6 +99,8 @@ public class Post {
     }
 
 
-
+    public void cargarCommentPost(Comment comment){
+        this.comments.add(comment);
+    }
 
 }

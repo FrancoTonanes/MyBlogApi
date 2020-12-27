@@ -28,6 +28,8 @@ public class CommentService {
         comment.setCreationDate(fecha);
         Post post = postRepository.findById(idPost).get();
         comment.setPost(post);
+        post.cargarCommentPost(comment);
+        user.cargarComments(comment);
         return commentRepository.save(comment);
 
     }
@@ -37,6 +39,11 @@ public class CommentService {
         Comment comentario = commentRepository.getOne(idComment);
         comentario.setComment(comment.getComment());
         return commentRepository.save(comentario);
+    }
+
+    public void deleteComment(Long idComment){
+        Comment comment = commentRepository.findById(idComment).get();
+        commentRepository.delete(comment);
     }
 
 }

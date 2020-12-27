@@ -60,10 +60,13 @@ public class UserService {
     }
 
     public void delete(Long userId){
+        /*
         ArrayList<Comment> comentarios = commentRepository.findByCommentUser(userId);
         commentRepository.deleteAll(comentarios);
         ArrayList<Post> post = postRepository.findByPost(userId);
         postRepository.deleteAll(post);
+
+         */
         User userDelete = userRepository.findById(userId).get();
         userRepository.delete(userDelete);
     }

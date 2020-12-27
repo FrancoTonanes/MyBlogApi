@@ -1,19 +1,11 @@
 package com.informatorio.api.model;
 
 
-
-import com.informatorio.api.repository.CommentRepository;
-import com.informatorio.api.repository.PostRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -38,8 +30,28 @@ public class User {
     private String cityName;
     private String stateName;
     private String country;
+    @JsonIgnore
+    @OneToMany(cascade = {CascadeType.ALL, CascadeType.REMOVE, CascadeType.PERSIST})
+    private List<Comment> comments;
+    @JsonIgnore
+    @OneToMany(cascade = {CascadeType.ALL, CascadeType.REMOVE, CascadeType.PERSIST})
+    private List<Post> posts;
 
+    public List<Comment> getComments() {
+        return comments;
+    }
 
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
 
     public Long getId() {
         return id;
@@ -114,6 +126,12 @@ public class User {
         this.country = country;
     }
 
+    public void cargarComments(Comment comment){
+        this.comments.add(comment);
+    }
+    public void cargarPost(Post post){
+        this.posts.add(post);
+    }
 
 
 }
