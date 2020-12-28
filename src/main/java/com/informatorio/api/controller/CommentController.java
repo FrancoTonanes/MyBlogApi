@@ -20,9 +20,14 @@ public class CommentController {
     @Autowired
     private CommentService commentService;
 
-    @GetMapping
-    public ArrayList<Comment> allComments (){
-        return (ArrayList<Comment>) commentRepository.findAll();
+    @GetMapping("/{idPost}")
+    public ArrayList<Comment> getAllCommentsPost (@PathVariable Long idPost){
+        return (ArrayList<Comment>) commentService.getAllCommentsPost(idPost);
+    }
+
+    @GetMapping("/{idPost}/limit={limit}")
+    public ArrayList<Comment> getCommentsPost (@PathVariable Long idPost, @PathVariable Long limit){
+        return (ArrayList<Comment>) commentService.getCommentsPost(idPost, limit);
     }
 
     @PostMapping("/{idPost}/user={idUser}")

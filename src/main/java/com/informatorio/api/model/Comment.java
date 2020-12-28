@@ -1,5 +1,6 @@
 package com.informatorio.api.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -24,6 +25,7 @@ public class Comment {
     @ManyToOne
     private User autor;
     @ManyToOne
+    @JsonIgnore
     private Post post;
     public Post getPost() {
         return post;

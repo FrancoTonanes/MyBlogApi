@@ -9,6 +9,7 @@ import com.informatorio.api.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 @Service
@@ -20,6 +21,14 @@ public class CommentService {
     private UserRepository userRepository;
     @Autowired
     private PostRepository postRepository;
+
+    public ArrayList<Comment> getAllCommentsPost(Long idPost){
+        return (ArrayList<Comment>) commentRepository.findByCommentsPost(idPost);
+    }
+
+    public ArrayList<Comment> getCommentsPost(Long idPost, Long limit){
+        return (ArrayList<Comment>) commentRepository.findByComments(idPost, limit);
+    }
 
     public Comment saveComment(Long idPost, Long idUser, Comment comment){
         User user = userRepository.findById(idUser).get();
