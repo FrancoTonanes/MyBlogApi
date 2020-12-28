@@ -16,7 +16,7 @@ public interface CommentRepository extends JpaRepository<Comment, Long> {
     @Query(value = "SELECT * FROM comentario c WHERE c.post_id=?1", nativeQuery = true)
     ArrayList<Comment> findByCommentsPost(Long idUser);
 
-    @Query(value = "SELECT * FROM comentario c WHERE c.post_id=?1 LIMIT ?2", nativeQuery = true)
+    @Query(value = "SELECT * FROM comentario c WHERE c.post_id=?1 ORDER BY c.creation_date desc LIMIT ?2", nativeQuery = true)
     ArrayList<Comment> findByComments(Long idUser, Long limit);
 
 }
