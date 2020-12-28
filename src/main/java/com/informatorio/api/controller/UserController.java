@@ -26,7 +26,7 @@ public class UserController {
     public ResponseEntity<?> getUser(){
         return new ResponseEntity<>(userService.getUsers(), HttpStatus.OK);
     }
-    @GetMapping("/city")
+    @GetMapping("/resistencia")
     public ResponseEntity<?> getCity(){
         return new ResponseEntity<>(userService.getCity(), HttpStatus.OK);
     }

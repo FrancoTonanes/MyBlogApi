@@ -11,4 +11,8 @@ import java.util.ArrayList;
 public interface PostRepository extends JpaRepository<Post, Long> {
     @Query(nativeQuery = true, value = "SELECT * FROM post ps WHERE ps.author_id_user=?1")
     ArrayList<Post> findByPost(Long idUser);
+    @Query(nativeQuery = true, value = "SELECT * FROM post ps WHERE ps.title LIKE %?1%")
+    ArrayList<Post> findByTitleLike(String palabra);
+    @Query(nativeQuery = true, value = "SELECT * FROM post ps WHERE ps.published=false")
+    ArrayList<Post> findByPostUnpublished();
 }

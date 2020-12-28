@@ -24,13 +24,22 @@ public class PostController {
     @Autowired
     private PostRepository postRepository;
 
-    @GetMapping("/all")
+    @GetMapping
     public ArrayList<Post> getPost(){
         return (ArrayList<Post>) postService.getAllPosts();
     }
     @GetMapping("/user/{idUser}")
     public ArrayList<Post> getUserPost(@PathVariable Long idUser){
         return (ArrayList<Post>) postService.allPostsUser(idUser);
+    }
+
+    @GetMapping("/title={palabra}")
+    public ArrayList<Post> getPostTitle(@PathVariable String palabra){
+        return (ArrayList<Post>) postService.getPostTitle(palabra);
+    }
+    @GetMapping("/unpublished")
+    public ArrayList<Post> getPostUnpublished(){
+        return (ArrayList<Post>) postService.getPostUnpublished();
     }
 
     @PostMapping("/{idUser}")

@@ -24,6 +24,14 @@ public class PostService {
         return (ArrayList<Post>) postRepository.findByPost(idUser);
     }
 
+    public ArrayList<Post> getPostTitle(String palabra){
+        return (ArrayList<Post>) postRepository.findByTitleLike(palabra);
+    }
+
+    public ArrayList<Post> getPostUnpublished(){
+        return (ArrayList<Post>) postRepository.findByPostUnpublished();
+    }
+
     public Post savePost(Long idUser, Post post){
         User user = userRepository.findById(idUser).get();
         Date fecha = new Date();
